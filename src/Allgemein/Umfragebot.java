@@ -4,10 +4,11 @@ import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
+
 public class Umfragebot extends TelegramLongPollingBot {
+	
    @Override
    public void onUpdateReceived(Update update) {
-
        // We check if the update has a message and the message has text
        if (update.hasMessage() && update.getMessage().hasText()) {
            // Set variables
@@ -27,12 +28,13 @@ public class Umfragebot extends TelegramLongPollingBot {
    public String getBotUsername() {
        // Return bot username
        // If bot username is @MyAmazingBot, it must return 'MyAmazingBot'
-       return "THUmfragenBot";
+       return Config.getProperty(Config.Property.BotUser);
    }
 
    @Override
    public String getBotToken() {
        // Return bot token from BotFather
-       return "444540486:AAGdsgVgJFVSDRctyVDZ5NmrMwU6lhMHegI";
+       return Config.getProperty(Config.Property.BotToken);
    }
+   
 }
