@@ -1,6 +1,5 @@
 package Allgemein;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +30,7 @@ public final class Config {
 		prop = new Properties();
 		try {
 		    // load a properties file from class path, inside static method
-			if (!fileExists(FILE)) return;
+			if (!Extensions.fileExists(FILE)) return;
 			
 			//InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(FILE);
 			//InputStream stream = Config.class.getClassLoader().getResourceAsStream(FILE);
@@ -43,24 +42,19 @@ public final class Config {
 		}
 	}
 	
-	private static boolean fileExists(String file) {
-		File f = new File(file);
-		return f.exists() && !f.isDirectory();
-	}
-	
 	private static void reInit() {
 		// for the present
 		init();
 	}
 	
+	
 	public enum Property {
 	    BotUser("botUser"),
 	    BotToken("botToken"),
 
-	    DB("db"),
-	    DBUser("dbUser"),
-	    DBPwd("dbPwd");
-				
+	    DBFile("dbFile");
+		
+		
 		private String name;
 		
 		private Property(String name) {
